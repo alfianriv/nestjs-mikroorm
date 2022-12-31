@@ -27,7 +27,7 @@ export class IdentityService {
   }
 
   findAll() {
-    return this.repository.findAll();
+    return this.repository.find({}, { populate: ['created_by', 'role'] });
   }
 
   async findOne(id: number) {

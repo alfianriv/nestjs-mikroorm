@@ -5,7 +5,7 @@ dotenv.config();
 export default defineConfig({
   type: 'postgresql',
   host: process.env.DB_HOST,
-  port: Number(process.env.DB_HOST),
+  port: Number(process.env.DB_PORT),
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   dbName: process.env.DB_NAME,
@@ -14,4 +14,5 @@ export default defineConfig({
   migrations: {
     path: './migrations',
   },
+  debug: true,
 });

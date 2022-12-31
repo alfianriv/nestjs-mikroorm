@@ -17,12 +17,12 @@ export class BaseEntity {
   @Property({ nullable: true })
   deleted_at?: Date;
 
-  @ManyToOne(() => Identity, { nullable: true, fieldName: 'created_by_id' })
+  @ManyToOne(() => Identity, { nullable: true, name: 'created_by_id' })
   created_by?: Identity;
 
-  @ManyToOne(() => Identity, { nullable: true, fieldName: 'updated_by_id' })
+  @ManyToOne(() => Identity, { nullable: true, name: 'updated_by_id' })
   updated_by?: Identity;
 
-  @ManyToOne(() => Identity, { nullable: true, fieldName: 'deleted_by_id' })
+  @ManyToOne(() => Identity, { nullable: true, name: 'deleted_by_id' })
   deleted_by?: Identity;
 }

@@ -15,24 +15,24 @@ export class UpdateIdentityDto extends PartialType(CreateIdentityDto) {
   @ApiProperty({ type: 'string', required: false })
   @IsString()
   @IsOptional()
-  fullname: string;
+  fullname?: string;
 
   @ApiProperty({ type: 'string', required: false })
   @IsEmail()
   @IsString()
   @IsOptional()
-  email: string;
+  email?: string;
 
   @ApiProperty({ type: 'string', required: false })
   @IsString()
   @MinLength(6)
   @MaxLength(32)
   @IsOptional()
-  password: string;
+  password?: string;
 
   @ApiProperty({ type: 'number' })
   @IsNumber()
   @IsInt()
   @IsOptional()
-  role_id: number;
+  role_id?: number;
 }

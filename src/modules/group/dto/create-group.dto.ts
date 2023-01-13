@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsNumber, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
-export class CreateRoleDto {
+export class CreateGroupDto {
   @ApiProperty({ type: 'string' })
   @IsString()
   name: string;
@@ -9,9 +9,4 @@ export class CreateRoleDto {
   @ApiProperty({ type: 'string' })
   @IsString()
   display_name: string;
-
-  @ApiProperty({ type: 'number' })
-  @IsNumber()
-  @IsInt()
-  group_id: number;
 }

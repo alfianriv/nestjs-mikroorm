@@ -1,15 +1,21 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger';
-import { IsOptional, IsString } from 'class-validator';
+import { IsInt, IsNumber, IsOptional, IsString } from 'class-validator';
 import { CreateRoleDto } from './create-role.dto';
 
 export class UpdateRoleDto extends PartialType(CreateRoleDto) {
   @ApiProperty({ type: 'string' })
   @IsString()
   @IsOptional()
-  name: string;
+  name?: string;
 
   @ApiProperty({ type: 'string' })
   @IsString()
   @IsOptional()
-  display_name: string;
+  display_name?: string;
+
+  @ApiProperty({ type: 'number' })
+  @IsNumber()
+  @IsInt()
+  @IsOptional()
+  group_id?: number;
 }

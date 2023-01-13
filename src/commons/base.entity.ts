@@ -1,7 +1,7 @@
 import { ManyToOne, PrimaryKey, Property } from '@mikro-orm/core';
 import { Identity } from '../modules/identity/entities/identity.entity';
 
-export class BaseEntity {
+export abstract class BaseEntity {
   @PrimaryKey({ type: 'number' })
   id: number;
 

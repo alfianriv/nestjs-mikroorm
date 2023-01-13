@@ -1,28 +1,29 @@
 import {
+  Collection,
   Entity,
   EntityRepositoryType,
   Filter,
-  ManyToOne,
+  OneToMany,
   Property,
 } from '@mikro-orm/core';
 import { BaseEntity } from '~/src/commons/base.entity';
 import { NotDeleted } from '~/src/commons/filters/not-deleted.filter';
-import { Group } from '../../group/entities/group.entity';
-import { RoleRepository } from '../repository/role.repository';
+import { Role } from '../../role/entities/role.entity';
+import { GroupRepository } from '../repository/group.repository';
 
-@Entity({ tableName: 'roles', customRepository: () => RoleRepository })
+@Entity({ tableName: 'groups', customRepository: () => GroupRepository })
 @Filter(NotDeleted)
-export class Role extends BaseEntity {
+export class Group extends BaseEntity {
   @Property()
   name: string;
 
   @Property()
   display_name: string;
 
-  @ManyToOne(() => Group, { name: 'group_id', nullable: true })
-  group?: Group;
+  @OneToMany(() => Role, (role) => role.group)
+  roles = new Collection<Role>(this);
 
-  [EntityRepositoryType]?: RoleRepository;
+  [EntityRepositoryType]?: GroupRepository;
 
   constructor(data: { name: string; display_name: string }) {
     super();

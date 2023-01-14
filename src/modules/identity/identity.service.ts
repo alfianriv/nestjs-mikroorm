@@ -27,7 +27,7 @@ export class IdentityService {
   }
 
   findAll() {
-    return this.repository.find({}, { populate: ['created_by', 'role'] });
+    return this.repository.find({});
   }
 
   async findOne(id: number) {
@@ -54,8 +54,8 @@ export class IdentityService {
   }
 
   async remove(id: number) {
-    await this.findOneById(id);
-    await this.repository.softDelete(id);
+    const item = await this.findOneById(id);
+    await this.repository.softDelete(item);
   }
 
   hashPassword(password: string, salt: string = null) {

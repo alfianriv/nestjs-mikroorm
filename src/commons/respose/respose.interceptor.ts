@@ -23,7 +23,7 @@ function RemappingData(incomingData) {
   if (Array.isArray(incomingData)) {
     response.data = incomingData;
   } else {
-    response.data = incomingData.data || incomingData;
+    response.data = incomingData?.data || incomingData;
   }
   return response;
 }

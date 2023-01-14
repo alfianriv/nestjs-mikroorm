@@ -302,6 +302,16 @@
           "nullable": true,
           "mappedType": "string"
         },
+        "dob": {
+          "name": "dob",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 6,
+          "mappedType": "datetime"
+        },
         "role_id": {
           "name": "role_id",
           "type": "int",

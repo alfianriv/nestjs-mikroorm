@@ -8,13 +8,8 @@ export class BaseRepository<T extends object> extends EntityRepository<T> {
     super(em, entity);
   }
 
-  async softDelete(id: number): Promise<void> {
-    await this.em
-      .getRepository(this.entityName)
-      .persistAndFlush({ id, deleted_at: new Date() });
-  }
-
-  async save(data: T) {
-    await this.em.getRepository(this.entityName).persistAndFlush(data);
+  async softDelete(entity: any): Promise<void> {
+    entity.deleted_at = new Date();
+    await this.persistAndFlush(entity);
   }
 }

@@ -16,6 +16,14 @@ import { NotDeleted } from '~/src/commons/filters/not-deleted.filter';
   customRepository: () => IdentityRepository,
 })
 @Filter(NotDeleted)
+@Filter({
+  name: 'isActive',
+  cond: { status: true },
+})
+@Filter({
+  name: 'isUnderAge',
+  cond: { dob: { $lte: new Date() } },
+})
 export class Identity extends BaseEntity {
   @Property()
   fullname: string;
@@ -31,6 +39,9 @@ export class Identity extends BaseEntity {
 
   @Property({ hidden: true, nullable: true })
   password_hint?: string;
+
+  @Property({ nullable: true })
+  dob?: Date;
 
   @ManyToOne(() => Role, { name: 'role_id' })
   role: Role;
